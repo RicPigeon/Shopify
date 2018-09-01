@@ -11,9 +11,11 @@ var LINQ = require('node-linq').LINQ;
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 const scopes = 'read_products,read_orders';
-const forwardingAddress = "http://184a21e2.ngrok.io/"; // Replace this with your HTTPS Forwarding address
 
 var router = express.Router();
+var app = express();
+var host = server.address().address;
+const forwardingAddress = host; // Replace this with your HTTPS Forwarding address
 
 let response = {
     status:200,
@@ -41,6 +43,7 @@ let getShopifyAppInfo = function(){
 let getInfosAndToken = function(shop, res){
     if (shop) {
       const state = nonce();
+      console.log(forwardingAddress);
       const redirectUri = forwardingAddress + 'api/shopify/callback';
       const installUrl = 'https://' + shop +
         '/admin/oauth/authorize?client_id=' + apiKey +
