@@ -1,0 +1,34 @@
+	<div>
+		<div class="container margin-top-nav">
+
+			<br><br>
+
+			<!-- <pre>{{ventes | json}}</pre> -->
+			<div>
+				<button data-ng-click="exporter()" class="btn btn-default">
+					Exporter
+					<i class="glyphicon glyphicon-export"></i>
+				</button>
+				<span class="pull-right"><b>Total : {{tableParams.total()}}</b></span>
+			</div>
+
+			<div data-ng-show="chargement" class="loader"></div>
+			<table ng-table="tableParams" class="table" show-filter="true">
+				<tr ng-repeat="order in $data">
+					<td title="'No.'" filter="{ noCommande: 'text'}" sortable="'noCommande'">{{order.noCommande}}</td>
+					<td title="'Quantité'" filter="{ quantite: 'text'}" sortable="'quantite'">{{order.quantite}}</td>
+					<td title="'Nom'" filter="{ nom: 'text'}" sortable="'nom'">{{order.nom}}</td>
+					<td title="'Prenom'" filter="{ prenom: 'text'}" sortable="'prenom'">{{order.prenom}}</td>
+					<td title="'Email'" filter="{ email: 'text'}" sortable="'email'">{{order.email}}</td>
+					<td title="'Adresse'" filter="{ adresse: 'text'}" sortable="'adresse'">{{order.adresse}}</td>
+					<td title="'Ville'" filter="{ ville: 'text'}" sortable="'ville'">{{order.ville}}</td>
+					<td title="'Telephone'" filter="{ telephone: 'text'}" sortable="'telephone'">{{order.telephone}}</td>
+					<td title="'Date achat'" filter="{ dateAchat: 'text'}" sortable="'dateAchat'">{{order.dateAchat}}</td>
+					<td title="'Info-Lettre'" filter="{ infoLettre: 'text'}" sortable="'dateAchat'">
+						<input type="checkbox" ng-model="order.infoLettre" disabled />
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+	</div>
